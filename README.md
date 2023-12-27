@@ -20,8 +20,9 @@
 * Instruções rápidas sobre como clonar e executar o projeto localmente.
 
 git clone https://github.com/chrystiancavalcante/Desafio-pokemom.git
-cd Desafio-pokemom
-docker-compose up
+
+* cd Desafio-pokemom
+* docker-compose up
 
 
 # Pré-requisitos
