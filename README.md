@@ -29,6 +29,6 @@ git clone https://github.com/chrystiancavalcante/Desafio-pokemom.git
 
 * Lista de coisas que você precisa para instalar o software e como instalá-las, por exemplo:
 
-Docker
-Docker Compose (se necessário)
+* Docker
+* Docker Compose (se necessário)
 
