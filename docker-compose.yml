@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  # Serviço para o backend
+  backend:
+    build: ./Back-end  # Caminho para o diretório do backend com o Dockerfile
+    ports:
+      - "3000:3000"   # Mapeia a porta 3000 do contêiner para a porta 3000 do host
+    depends_on:
+      - db            # Indica que o backend depende do banco de dados
+    environment:
+      - DB_HOST=db    # Configura variáveis de ambiente necessárias
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=senha123
+      - DB_NAME=postgresdb
+
+  # Serviço para o frontend
+  frontend:
+    build: ./Front-end/clube-pokemom # Caminho para o diretório do frontend com o Dockerfile
+    ports:
+      - "8080:8080"   # Mapeia a porta 8080 do contêiner para a porta 8080 do host
+
+  # Serviço para o banco de dados PostgreSQL
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"   # Mapeia a porta 5432 do contêiner para a porta 5432 do host
+    environment:
+      - POSTGRES_PASSWORD=senha123
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgresdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+# Volumes para persistência de dados
+volumes:
+  postgres_data:

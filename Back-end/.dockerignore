@@ -1,0 +1,26 @@
+# Ignora o diretório node_modules
+node_modules
+
+# Ignora arquivos de log
+*.log
+
+# Ignora arquivos de configuração do editor
+.editorconfig
+.vscode
+
+# Ignora o diretório de cache do npm
+.npm
+
+# Ignora arquivos de configuração de ambiente local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignora diretórios de teste e documentação
+tests
+docs
+
+# Ignora arquivos específicos do sistema operacional
+.DS_Store
+Thumbs.db
