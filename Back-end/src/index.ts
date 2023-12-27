@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 
 const app = express();
 app.use(bodyParser.json()); 
-export default app;
+
 
 interface Pokemon {
   name: string;
@@ -99,3 +99,4 @@ app.get('/pokemon/:id/evolutions', async (req: Request, res: Response) => {
   }
 });
   
+export default app;
