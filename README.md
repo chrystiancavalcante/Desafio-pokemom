@@ -13,3 +13,21 @@
 ### 6°) Para o desenvolvimento do Backend utilize Typescript com Nodejs, para o desenvolvimento do Frontend utilize Typescript com React usando o framework (Vite) e para o banco de dados se necessário o Postgres
 
 ### Recurso API a ser utilizado: https://pokeapi.co/
+
+
+# Início Rápido
+
+* Instruções rápidas sobre como clonar e executar o projeto localmente.
+
+git clone https://github.com/chrystiancavalcante/Desafio-pokemom.git
+cd Desafio-pokemom
+docker-compose up
+
+
+# Pré-requisitos
+
+* Lista de coisas que você precisa para instalar o software e como instalá-las, por exemplo:
+
+Docker
+Docker Compose (se necessário)
+
