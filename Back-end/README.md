@@ -20,8 +20,9 @@ Breve descrição do que a API faz:
 ### Instalação
 
 git clone https://github.com/chrystiancavalcante/Desafio-pokemom.git
-cd Desafio-pokemom
-docker-compose up
+
+* cd Desafio-pokemom
+* docker-compose up
 
 ## Uso
 
