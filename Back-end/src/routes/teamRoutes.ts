@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import { verifyToken } from '../authMiddleware';
 const router = express.Router();
 
 const teams: PokemonTeam[] = []; 
@@ -40,7 +41,7 @@ let nextTeamId = 1;
  *       400:
  *         description: Erro na criação do time (geralmente causado por um número incorreto de Pokémons)
  */
-router.post('/team', (req: Request, res: Response) => {
+router.post('/team', verifyToken, (req: Request, res: Response) => {
     const { pokemons } = req.body;
     if (!pokemons || pokemons.length !== 5) {
       return res.status(400).send('Um time deve ter exatamente 5 Pokémons.');

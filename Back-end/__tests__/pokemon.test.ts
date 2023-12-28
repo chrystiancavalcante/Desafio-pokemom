@@ -3,7 +3,9 @@ import app from '../src/index';
 
 describe('GET /pokemons', () => {
   it('Deve retornar uma lista de pokémons', async () => {
-    const res = await request(app).get('/pokemons');
+    const res = await request(app)
+    .get('/pokemons');
+
 
     expect(res.statusCode).toEqual(200);
     expect(res.body).toBeInstanceOf(Array);

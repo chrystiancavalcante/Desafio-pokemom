@@ -10,7 +10,7 @@ describe('GET /pokemon/:id/evolutions', () => {
     });
   
     it('Deve retornar um erro para um ID de Pokémon inválido', async () => {
-      const res = await request(app).get('/pokemon/9999/evolutions'); // ID inexistente
+      const res = await request(app).get('/pokemon/9999/evolutions'); // 
   
       expect(res.statusCode).toEqual(500);
     });

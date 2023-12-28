@@ -9,6 +9,8 @@ services:
     depends_on:
       - db            # Indica que o backend depende do banco de dados
     environment:
+      - JWT_SECRET_KEY=minha_chave_secreta_aqui
+      - DB_CONNECTION_STRING=postgres://postgres:senha123@db:5432/postgresdb
       - DB_HOST=db    # Configura variáveis de ambiente necessárias
       - DB_PORT=5432
       - DB_USER=postgres

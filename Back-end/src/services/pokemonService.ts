@@ -4,7 +4,7 @@ export async function getPokemons(): Promise<Pokemon[]> {
     try {
       const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151');
       const pokemons = await Promise.all(response.data.results.map(async (pokemon: { url: string; name: any; }) => {
-        const pokemonDetails = await axios.get(pokemon.url); // Busca detalhes adicionais para cada Pokémon
+        const pokemonDetails = await axios.get(pokemon.url); 
         const types = pokemonDetails.data.types.map((typeInfo: { type: { name: any; }; }) => typeInfo.type.name);
         return {
           name: pokemon.name,
