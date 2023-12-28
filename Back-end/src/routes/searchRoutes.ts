@@ -7,6 +7,7 @@ const router = express.Router();
  * /pokemons/search:
  *   get:
  *     summary: Busca Pokémons por nome ou tipo
+ *     tags: [Pokémons]
  *     description: Permite a filtragem dos Pokémons por nome, tipo ou ambos.
  *     parameters:
  *       - in: query

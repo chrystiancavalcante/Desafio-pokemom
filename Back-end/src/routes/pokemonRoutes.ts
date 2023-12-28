@@ -4,9 +4,14 @@ const router = express.Router();
 
 /**
  * @openapi
+ *   tags:
+ *   name: Pokémons
+ *   description: Operações de busca de pokémons
+ * 
  * /pokemons:
  *   get:
  *     summary: Retorna uma lista de pokémons
+ *     tags: [Pokémons]
  *     responses:
  *       200:
  *         description: Uma lista de pokémons

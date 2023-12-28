@@ -7,9 +7,14 @@ let nextTeamId = 1;
 
 /**
  * @openapi
+ *   tags:
+ *   name: Times
+ *   description: Operação para criação de times de pokémons
+ *
  * /team:
  *   post:
  *     summary: Cria um novo time de Pokémons
+ *     tags: [Times]
  *     description: Recebe um array de Pokémons e cria um novo time com exatamente 5 membros.
  *     requestBody:
  *       required: true

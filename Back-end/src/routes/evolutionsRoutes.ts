@@ -7,6 +7,7 @@ const router = express.Router();
 * /pokemon/{id}/evolutions:
 *   get:
 *     summary: Retorna as evoluções de um Pokémon específico
+*     tags: [Pokémons]
 *     description: Fornece as informações de evolução para um Pokémon baseado em seu ID.
 *     parameters:
 *       - in: path

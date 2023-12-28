@@ -4,6 +4,39 @@ import UserService from '../services/userService';
 
 const router = express.Router();
 
+/**
+ * @openapi
+ * tags:
+ *   name: Autenticação
+ *   description: Operações de autenticação
+ * 
+ * /register:
+ *   post:
+ *     summary: Registra um novo usuário
+ *     tags: [Autenticação]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - username
+ *               - password
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 description: O nome de usuário para registro
+ *               password:
+ *                 type: string
+ *                 description: A senha para o usuário
+ *     responses:
+ *       201:
+ *         description: Usuário registrado com sucesso
+ *       400:
+ *         description: Entrada inválida
+ */
+
 router.post('/register', async (req: Request, res: Response) => {
     const { username, password } = req.body;
 
