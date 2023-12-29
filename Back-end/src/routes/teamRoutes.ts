@@ -7,7 +7,7 @@ let nextTeamId = 1;
 
 /**
  * @openapi
- *   tags:
+ * tags:
  *   name: Times
  *   description: Operação para criação de times de pokémons
  *
@@ -15,7 +15,9 @@ let nextTeamId = 1;
  *   post:
  *     summary: Cria um novo time de Pokémons
  *     tags: [Times]
- *     description: Recebe um array de Pokémons e cria um novo time com exatamente 5 membros.
+ *     description: Recebe um array de Pokémons e cria um novo time com exatamente 5 membros. Requer autenticação.
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -45,7 +47,10 @@ let nextTeamId = 1;
  *                     type: string
  *       400:
  *         description: Erro na criação do time (geralmente causado por um número incorreto de Pokémons)
+ *       401:
+ *         description: Não autorizado (sem token ou token inválido)
  */
+
 router.post('/team', verifyToken, (req: Request, res: Response) => {
     const { pokemons } = req.body;
     if (!pokemons || pokemons.length !== 5) {
