@@ -33,8 +33,10 @@ const router = express.Router();
  */
 
 router.get('/pokemons', async (req: Request, res: Response) => {
+  const limit = parseInt(req.query.limit as string) || 20;
+  const offset = parseInt(req.query.offset as string) || 0;
     try {
-      const pokemons = await getPokemons();
+      const pokemons = await getPokemons(limit, offset);
       res.json(pokemons);
     } catch (error) {
       res.status(500).send('Erro ao buscar Pokémons');

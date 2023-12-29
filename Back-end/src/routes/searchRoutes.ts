@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { getPokemons } from '../services/pokemonService';
+import { getPokemonsByType, getPokemonsByName } from '../services/pokemonService';
 const router = express.Router();
 
 /**
@@ -46,28 +46,38 @@ const router = express.Router();
  *         description: Erro ao filtrar Pokémons
  */
 router.get('/pokemons/search', async (req: Request, res: Response) => {
-    const { name, type } = req.query;
-    try {
-      let pokemons = await getPokemons();
-      if (name) {
-        pokemons = pokemons.filter(pokemon => 
-          pokemon.name.toLowerCase().includes(name.toString().toLowerCase())
-        );
-      }
-      if (type) {
-        pokemons = pokemons.filter(pokemon => 
-          pokemon.type.some(typeItem => typeItem.toLowerCase() === type.toString().toLowerCase())
-        );
-      }
-  
-      if (pokemons.length === 0) {
-        return res.status(404).send('Nenhum Pokémon encontrado com os filtros fornecidos.');
-      }
-  
-      res.json(pokemons);
-    } catch (error) {
-      res.status(500).send('Erro ao filtrar Pokémons');
-    }
-  });
+  const { name, type } = req.query;
 
-export default router;  
+  try {
+      let pokemons = [];
+
+      if (name && type) {
+          // Busca combinada por nome e tipo
+          const pokemonsByName = await getPokemonsByName(name.toString());
+          const pokemonsByType = await getPokemonsByType(type.toString());
+          
+          // Filtrar pokemonsByName para incluir apenas aqueles que também estão em pokemonsByType
+          pokemons = pokemonsByName.filter(pokemon => 
+              pokemonsByType.some(typePokemon => typePokemon.id === pokemon.id)
+          );
+      } else if (name) {
+          // Busca apenas por nome
+          pokemons = await getPokemonsByName(name.toString());
+      } else if (type) {
+          // Busca apenas por tipo
+          pokemons = await getPokemonsByType(type.toString());
+      } else {
+          // Se nenhum filtro for fornecido, decida o que fazer (ex: retornar erro ou lista padrão)
+          return res.status(400).send('Parâmetros de pesquisa não fornecidos');
+      }
+
+      if (pokemons.length === 0) {
+          return res.status(404).send('Nenhum Pokémon encontrado com os filtros fornecidos.');
+      }
+
+      res.json(pokemons);
+  } catch (error) {
+      res.status(500).send('Erro ao buscar Pokémons');
+  }
+});
+export default router;
