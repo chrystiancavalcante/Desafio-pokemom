@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { TextField, Button, Container, Typography, Box, Paper } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -27,29 +29,45 @@ const Register = () => {
       }
     };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Username</label>
-        <input 
-          type="text" 
-          value={username} 
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label>Password</label>
-        <input 
-          type="password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
-      <button type="submit">Register</button>
-    </form>
-  );
+    return (
+      <Container component="main" maxWidth="xs">
+        <Paper elevation={3} style={{ marginTop: '15vh', padding: '20px', borderRadius: '15px' }}>
+          <Typography variant="h4" style={{ marginBottom: '1rem', textAlign: 'center' }}>
+            Registrar
+          </Typography>
+          <form onSubmit={handleSubmit}>
+            <Box mb={2}>
+              <TextField
+                label="Username"
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                fullWidth
+                required
+                variant="outlined"
+              />
+            </Box>
+            <Box mb={2}>
+              <TextField
+                label="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                fullWidth
+                required
+                variant="outlined"
+              />
+            </Box>
+            <Button type="submit" variant="contained" color="primary" fullWidth>
+              Registrar
+            </Button>
+          </form>
+          <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+          Já tem conta?<Link to="/login"> Login</Link>
+        </div>
+        </Paper>
+      </Container>
+    );
 };
 
 export default Register;

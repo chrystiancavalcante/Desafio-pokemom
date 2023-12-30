@@ -1,4 +1,3 @@
-//import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -11,7 +10,7 @@ const Home = () => {
       </nav>
       <p>Campos de pesquisa</p>
       <nav>
-        <Link to="/pokemonList">Listar todos</Link> | <Link to="/pokemonSearch">Pesquisar por nome e ou tipo</Link> | <Link to="/createTeam">Criar time</Link>
+        <Link to="/pokemonList">Listar todos</Link> | <Link to="/pokemonSearch">Pesquisar por nome e ou tipo</Link> | <Link to="/createTeam">Criar time</Link> | <Link to="/PokemonEvolutionsViewer">Evolucao do pokemon</Link>
       </nav>
     </div>
   );
