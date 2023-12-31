@@ -1,36 +1,38 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from './contexts/AuthContext';
 import { TextField, Button, Container, Typography, Box, Paper } from '@mui/material';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-        const response = await fetch('http://localhost:3000/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username, password }),
-        });
-  
-        if (!response.ok) {
-          throw new Error('Falha no login');
-        }
-  
-        const data = await response.json();      
-        localStorage.setItem('token', data.token);
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-        navigate('/');
-  
-      } catch (error) {
-        console.error('Erro no login:', error);
-       
+      if (!response.ok) {
+        throw new Error('Falha no login');
       }
+
+      const data = await response.json();
+      //localStorage.setItem('token', data.token);
+      login(data.token, username);
+      navigate('/');
+
+    } catch (error) {
+      console.error('Erro no login:', error);
+
+    }
   };
 
   return (
@@ -69,7 +71,7 @@ const Login = () => {
         <div style={{ marginTop: '1rem', textAlign: 'center' }}>
           Não tem conta?<Link to="/register"> Registrar</Link>
         </div>
-      
+
       </Paper>
     </Container>
   );

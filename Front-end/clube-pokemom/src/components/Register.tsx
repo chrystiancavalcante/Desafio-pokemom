@@ -1,33 +1,37 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Container, Typography, Box, Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useAuth } from './contexts/AuthContext'; 
 
 const Register = () => {
+  const navigate = useNavigate();
+  const { login } = useAuth(); 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-        const response = await fetch('https://2331-2804-7f1-e88d-7939-c1e4-e04b-8b36-503e.ngrok-free.app/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username, password }),
-        });
-  
-        if (!response.ok) {
-          throw new Error('Erro ao registrar');
-        }
-  
-        // Sucesso na resposta
-        // Processar a resposta, como redirecionar o usuário ou mostrar uma mensagem
-      } catch (error) {
-        console.error('Erro no registro:', error);
-        // Trate o erro aqui, por exemplo, exibir uma mensagem de erro
+      const response = await fetch('https://2331-2804-7f1-e88d-7939-c1e4-e04b-8b36-503e.ngrok-free.app/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao registrar');
       }
-    };
+
+      const data = await response.json();
+      login(data.token, username); 
+      navigate('/'); 
+    } catch (error) {
+      console.error('Erro no registro:', error);
+    }
+  };
 
     return (
       <Container component="main" maxWidth="xs">

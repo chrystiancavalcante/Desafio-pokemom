@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Box, Typography, Snackbar, Paper } from '@mui/material';
+import { Button, Box, Typography, Snackbar, Alert } from '@mui/material';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -158,15 +158,15 @@ const CreateTeam: React.FC = () => {
         </Button>
       </form>
       <Snackbar open={Boolean(error)} autoHideDuration={6000} onClose={() => setError('')}>
-        <Paper style={{ padding: '20px', color: 'red' }}>{error}</Paper>
+        <Alert severity="error">{error}</Alert>
       </Snackbar>
 
       <Snackbar open={Boolean(successMessage)} autoHideDuration={6000} onClose={() => setSuccessMessage('')}>
-        <Paper style={{ padding: '20px', color: 'green' }}>{successMessage}</Paper>
+      <Alert severity="success">{successMessage}</Alert>
       </Snackbar>
 
       {isTeamCreated && (
-        <Button style={{ marginTop: '10px'}} variant="outlined" onClick={() => setShowTeam(!showTeam)}>
+        <Button style={{ marginTop: '10px' }} variant="outlined" onClick={() => setShowTeam(!showTeam)}>
           {showTeam ? 'Esconder Time' : 'Ver Time'}
         </Button>
       )}
