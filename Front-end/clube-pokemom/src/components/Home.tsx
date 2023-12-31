@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItemButton, ListItemText, CssBaseline, Button } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useAuth } from './contexts/AuthContext';
 import PokemonList from './PokemonList';
@@ -31,6 +32,14 @@ const Home = () => {
     { text: 'Visualizar Evoluções', component: 'pokemonEvolutionViewer' },
   ];
 
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 5) return 'boa Madrugada !';
+    else if (hour < 12) return 'bom dia, já tomou seu café da manhã hoje ?';
+    else if (hour < 18) return 'boa tarde !';
+    else return 'boa noite, já saiu para passear com o cachorro hoje ?';
+  };
+
   const handleLogout = () => {
     logout();
     navigate('/login');
@@ -50,7 +59,7 @@ const Home = () => {
         return null;
     }
   };
-  
+
   const handleMenuItemClick = (component: string) => {
     setActiveComponent(component);
     setDrawerOpen(false);
@@ -72,9 +81,9 @@ const Home = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" style={{ flexGrow: 1 }}>
-            Bem-vindo, {username} !
+            Clube do Pokémon
           </Typography>
-          <Button color="inherit" onClick={handleLogout}>Logout</Button>
+          <Button color="inherit" onClick={handleLogout}><LogoutIcon /></Button>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -101,6 +110,11 @@ const Home = () => {
       </Drawer>
       <main style={{ flexGrow: 1, padding: '24px', marginLeft: drawerOpen ? drawerWidth : 0 }}>
         <Toolbar />
+        <div style={{ flexGrow: 1, marginLeft: 20, backgroundColor: '#8FC9F9', borderRadius: 15, padding: 30, color: '#FFFFFF' }}>
+        <Typography variant="h6" style={{ flexGrow: 1, marginLeft: 40 }}>
+          {username}, {getGreeting()}
+        </Typography>
+        </div>
         {renderComponent()}
       </main>
     </div>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Button, CircularProgress, Box, Grid, Typography, Paper } from '@mui/material';
 import PokemonCard from './PokemonCard';
+import './PokemonList.css';
+
 
 interface Pokemon {
   id: number;
@@ -52,7 +54,7 @@ const PokemonList: React.FC = () => {
   return (
     <Box p={3}>
       <Paper elevation={3} style={{ padding: '20px' }}>
-        <Typography variant="h4" gutterBottom>
+        <Typography className="pokemonTypography" variant="h4" gutterBottom>
           Lista de Pokémons
         </Typography>
 

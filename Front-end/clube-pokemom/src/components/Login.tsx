@@ -1,23 +1,29 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 import { TextField, Button, Container, Typography, Box, Paper } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup'; 
+
+const validationSchema = Yup.object({
+  username: Yup.string().required('Obrigatório'),
+  password: Yup.string().required('Obrigatório'),
+});
 
 const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [generalError, setGeneralError] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleFormSubmit = async (values: { username: string; }) => {
     try {
       const response = await fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify(values),
       });
 
       if (!response.ok) {
@@ -25,13 +31,11 @@ const Login = () => {
       }
 
       const data = await response.json();
-      //localStorage.setItem('token', data.token);
-      login(data.token, username);
+      login(data.token, values.username);
       navigate('/');
 
     } catch (error) {
-      console.error('Erro no login:', error);
-
+      setGeneralError('Usuário ou senha incorretos');
     }
   };
 
@@ -41,37 +45,46 @@ const Login = () => {
         <Typography variant="h4" style={{ marginBottom: '1rem', textAlign: 'center' }}>
           Entrar
         </Typography>
-        <form onSubmit={handleSubmit}>
-          <Box mb={2}>
-            <TextField
-              label="Username"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              fullWidth
-              required
-              variant="outlined"
-            />
-          </Box>
-          <Box mb={2}>
-            <TextField
-              label="Password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              fullWidth
-              required
-              variant="outlined"
-            />
-          </Box>
-          <Button type="submit" variant="contained" color="primary" fullWidth>
-            Login
-          </Button>
-        </form>
+        <Formik
+          initialValues={{ username: '', password: '' }}
+          validationSchema={validationSchema}
+          onSubmit={handleFormSubmit}
+        >
+          {({ errors, touched }) => (
+            <Form>
+              <Box mb={2}>
+                <Field
+                  as={TextField}
+                  label="Username *"
+                  name="username"
+                  fullWidth
+                  variant="outlined"
+                  error={touched.username && Boolean(errors.username)}
+                  helperText={touched.username && errors.username}
+                />
+              </Box>
+              <Box mb={2}>
+                <Field
+                  as={TextField}
+                  label="Password *"
+                  name="password"
+                  type="password"
+                  fullWidth
+                  variant="outlined"
+                  error={touched.password && Boolean(errors.password)}
+                  helperText={touched.password && errors.password}
+                />
+              </Box>
+              <Button type="submit" variant="contained" color="primary" fullWidth>
+                Login
+              </Button>
+              {generalError && <Typography color="error" variant="body2">{generalError}</Typography>}
+            </Form>
+          )}
+        </Formik>
         <div style={{ marginTop: '1rem', textAlign: 'center' }}>
-          Não tem conta?<Link to="/register"> Registrar</Link>
+          Não tem conta? <Link to="/register">Registrar</Link>
         </div>
-
       </Paper>
     </Container>
   );

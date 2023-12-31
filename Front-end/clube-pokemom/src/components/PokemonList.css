@@ -22,4 +22,15 @@
   .load-more-button:hover {
     background-color: #1565c0;
   }
-  
+
+  .pokemonTypography {
+    color: #1876D1;
+    font-weight:600;
+    font-family: '"Segoe UI", sans-serif'; 
+    text-shadow: 2px 4px 4px rgba(28,135,236,0.6); 
+    &:hover {
+      color: #ff0000;
+      /* transform: scale(1.05); */
+      transition: transform 0.3s ease-in-out;
+    }
+  }

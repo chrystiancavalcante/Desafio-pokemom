@@ -18,8 +18,11 @@ export const useAuth = () => {
 };
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [username, setUsername] = useState<string | null>(null);
+  const token = localStorage.getItem('token');
+  const storedUsername = localStorage.getItem('username') ?? null;
+  
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!token);
+  const [username, setUsername] = useState<string | null>(storedUsername);
 
   useEffect(() => {
     const token = localStorage.getItem('token');

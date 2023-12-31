@@ -131,7 +131,7 @@ const CreateTeam: React.FC = () => {
 
   return (
     <Box p={3} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <Typography variant="h4" gutterBottom>
+      <Typography className="pokemonTypography" variant="h4" gutterBottom>
         Crie seu Time de Pokémons
       </Typography>
       <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '600px' }}>

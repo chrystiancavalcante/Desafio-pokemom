@@ -52,7 +52,7 @@ const PokemonSearch: React.FC = () => {
   return (
     <Box p={3}>
       <Paper elevation={3} style={{ padding: '20px' }}>
-        <Typography variant="h4" gutterBottom>
+        <Typography className="pokemonTypography" variant="h4" gutterBottom>
           Pesquisar Pokémons
         </Typography>
         <form onSubmit={handleSearch}>

@@ -21,7 +21,7 @@ const PokemonEvolutionViewer: React.FC = () => {
   return (
     <Box p={3}>
       <Paper elevation={3} style={{ padding: '20px', textAlign: 'center' }}>
-        <Typography variant="h5" gutterBottom>
+        <Typography className="pokemonTypography" variant="h5" gutterBottom>
           Visualizador de Evoluções Pokémon
         </Typography>
         <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
