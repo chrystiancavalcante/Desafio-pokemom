@@ -2,12 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Button, CircularProgress, Box, Grid, Typography, Paper } from '@mui/material';
 import PokemonCard from './PokemonCard';
 import './PokemonList.css';
-
-
-interface Pokemon {
-  id: number;
-  name: string;
-}
+import { Pokemon } from './Types';
 
 const PokemonList: React.FC = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
@@ -53,8 +48,8 @@ const PokemonList: React.FC = () => {
 
   return (
     <Box p={3}>
-      <Paper elevation={3} style={{ padding: '20px' }}>
-        <Typography className="pokemonTypography" variant="h4" gutterBottom>
+      <Paper elevation={3} style={{ padding: '20px', backgroundColor: 'rgba(255, 255, 255, 0.6)' }}>
+        <Typography className="pokemonTypography" variant="h4" style={{fontFamily: 'Luckiest Guy'}} gutterBottom>
           Lista de Pokémons
         </Typography>
 

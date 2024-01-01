@@ -40,11 +40,14 @@ const router = express.Router();
  *                     type: array
  *                     items:
  *                       type: string
+ *       400:
+ *         description: Parâmetros de pesquisa não fornecidos
  *       404:
  *         description: Nenhum Pokémon encontrado com os filtros fornecidos
  *       500:
- *         description: Erro ao filtrar Pokémons
+ *         description: Erro ao buscar Pokémons
  */
+
 router.get('/pokemons/search', async (req: Request, res: Response) => {
   const { name, type } = req.query;
 
@@ -56,7 +59,6 @@ router.get('/pokemons/search', async (req: Request, res: Response) => {
           const pokemonsByName = await getPokemonsByName(name.toString());
           const pokemonsByType = await getPokemonsByType(type.toString());
           
-          // Filtrar pokemonsByName para incluir apenas aqueles que também estão em pokemonsByType
           pokemons = pokemonsByName.filter(pokemon => 
               pokemonsByType.some(typePokemon => typePokemon.id === pokemon.id)
           );
@@ -67,7 +69,7 @@ router.get('/pokemons/search', async (req: Request, res: Response) => {
           // Busca apenas por tipo
           pokemons = await getPokemonsByType(type.toString());
       } else {
-          // Se nenhum filtro for fornecido, decida o que fazer (ex: retornar erro ou lista padrão)
+          
           return res.status(400).send('Parâmetros de pesquisa não fornecidos');
       }
 

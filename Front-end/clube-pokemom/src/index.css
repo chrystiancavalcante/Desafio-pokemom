@@ -1,5 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Times, 'Times New Roman', serif, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -21,14 +27,6 @@ a {
 a:hover {
   color: #535bf2;
 }
-
-/* html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
 h1 {
   font-size: 3.2em;
@@ -66,21 +64,81 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
-.pokemon-card {
-  /* Estilos para o cartão */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
+.drawer-header {
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/softwarepro-28ade.appspot.com/o/pokemon-club-graphic.jpeg?alt=media&token=fceba11c-6910-49f6-a35b-ded29f9a337f');
+  padding: 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 200px; 
 }
+
 .pokemonTypography {
-  color: #1876D1;
+  color: #FFCB05; 
+  text-shadow:  
+    3px 3px 0px #003A70, 
+    6px 6px 0px rgba(0,0,0,0.15); 
   font-weight:600;
-  font-family: '"Segoe UI", sans-serif'; 
-  text-shadow: 2px 4px 4px rgba(28,135,236,0.6); 
+  font-family: 'Luckiest Guy', serif; 
   &:hover {
     color: #ff0000;
-    /* transform: scale(1.05); */
     transition: transform 0.3s ease-in-out;
   }
+}
+.full-screen-background {
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/softwarepro-28ade.appspot.com/o/pokemonclub.png?alt=media&token=d02e1428-63c7-43ce-875a-98d06c50ac7e');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; 
+  width: 100vw; 
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+}
+.home-background {
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/softwarepro-28ade.appspot.com/o/147fca969308b2ce8b7988ab47bb2e01.jpg?alt=media&token=e0c57d90-cc3d-43ae-9326-b86c54e211d3');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  width: 100%;
+}
+.transparent-background {
+  background-color: rgba(255, 255, 255, 0.4); 
+}
+
+/* Pokemon Card */
+
+.pokemon-card {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.05);
+}
+
+.pokemon-card img {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.pokemon-name {
+  color: #FFCB05; 
+  text-shadow:  
+    3px 3px 0px #003A70, 
+    6px 6px 0px rgba(0,0,0,0.15); 
+  font-weight:600;
+  font-family: 'Luckiest Guy', serif; 
+}
+
+.pokemon-type {
+  background-color: #f8d030; 
+  color: white;
+  border-radius: 10px;
+  padding: 3px 6px;
+  display: inline-block;
+  margin-top: 5px;
 }

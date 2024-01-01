@@ -38,9 +38,10 @@ const Register = () => {
   };
 
   return (
+    <div className="full-screen-background">
     <Container component="main" maxWidth="xs">
-      <Paper elevation={3} style={{ marginTop: '15vh', padding: '20px', borderRadius: '15px' }}>
-        <Typography variant="h4" style={{ marginBottom: '1rem', textAlign: 'center' }}>
+      <Paper elevation={3} style={{ marginTop: '8vh', padding: '20px', borderRadius: '15px', backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
+        <Typography className="pokemonTypography" variant="h4" style={{ marginBottom: '1rem', textAlign: 'center', fontFamily: 'Luckiest Guy' }}>
           Registrar
         </Typography>
         <Formik
@@ -87,6 +88,7 @@ const Register = () => {
         </div>
       </Paper>
     </Container>
+    </div>
   );
 };
 

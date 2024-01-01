@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Box, Typography, Snackbar, Alert } from '@mui/material';
+import { Button, Box, Typography, Snackbar, Alert, Paper } from '@mui/material';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PokemonCard from './PokemonCard';
 import './CarouselStyles.css';
-
-interface Pokemon {
-  id: number;
-  name: string;
-}
+import { Pokemon } from './Types';
 
 const CreateTeam: React.FC = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
@@ -58,17 +54,15 @@ const CreateTeam: React.FC = () => {
 
     if (selectedPokemons.length === 5) {
       try {
-        // Recuperar o token do localStorage
         const token = localStorage.getItem('token');
         if (!token) {
           throw new Error('Token de autenticação não encontrado');
         }
-        // Enviar a requisição ao servidor com o token no cabeçalho de autorização
         const response = await fetch('http://localhost:3000/team', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}` // Adiciona o token ao cabeçalho de autorização
+            'Authorization': `Bearer ${token}`
           },
           body: JSON.stringify({ pokemons: selectedPokemons })
         });
@@ -94,7 +88,7 @@ const CreateTeam: React.FC = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 4,
     arrows: true,
     afterChange: (currentSlide: number) => {
@@ -130,59 +124,63 @@ const CreateTeam: React.FC = () => {
   };
 
   return (
-    <Box p={3} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <Typography className="pokemonTypography" variant="h4" gutterBottom>
-        Crie seu Time de Pokémons
-      </Typography>
-      <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '600px' }}>
-        <Slider {...settings}>
-          {pokemons.map(pokemon => (
-            <div key={pokemon.id} style={{ margin: '10px' }}>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={selectedPokemons.includes(pokemon.id)}
-                  onChange={() => handlePokemonSelect(pokemon.id)}
-                  style={{ display: 'none' }} // Esconde o checkbox padrão
-                />
-                <div className="pokemon-list-container"
-                  style={selectedPokemons.includes(pokemon.id) ? selectedStyle : {}}>
-                  <PokemonCard pokemon={pokemon} />
-                </div>
-              </label>
-            </div>
-          ))}
-        </Slider>
-        <Button style={{ marginTop: '10px' }} type="submit" variant="contained" color="primary" fullWidth>
-          Criar Time
-        </Button>
-      </form>
-      <Snackbar open={Boolean(error)} autoHideDuration={6000} onClose={() => setError('')}>
-        <Alert severity="error">{error}</Alert>
-      </Snackbar>
-
-      <Snackbar open={Boolean(successMessage)} autoHideDuration={6000} onClose={() => setSuccessMessage('')}>
-      <Alert severity="success">{successMessage}</Alert>
-      </Snackbar>
-
-      {isTeamCreated && (
-        <Button style={{ marginTop: '10px' }} variant="outlined" onClick={() => setShowTeam(!showTeam)}>
-          {showTeam ? 'Esconder Time' : 'Ver Time'}
-        </Button>
-      )}
-
-      {showTeam && (
-        <Box mt={2}>
-          <Typography variant="h5">Seu Time:</Typography>
-          <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
-            {team.map(pokemon => (
-              <div key={pokemon.id} style={{ margin: '10px' }}>
-                <PokemonCard pokemon={pokemon} />
+    <Box p={3}>
+      <Paper className='transparent-background' elevation={3} style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.6)' }}>
+        <Typography className="pokemonTypography" variant="h4" style={{ fontFamily: 'Luckiest Guy' }} gutterBottom>
+          Crie seu Time de Pokémons
+        </Typography>
+        <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '1000px' }}>
+          <Slider {...settings}>
+            {pokemons.map(pokemon => (
+              <div key={pokemon.id} style={{ margin: '10px', display: 'flex', justifyContent: 'center'  }}>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={selectedPokemons.includes(pokemon.id)}
+                    onChange={() => handlePokemonSelect(pokemon.id)}
+                    style={{ display: 'none' }} // Esconde o checkbox padrão
+                  />
+                  <div className="pokemon-list-container"
+                    style={selectedPokemons.includes(pokemon.id) ? selectedStyle : {}}>
+                    <PokemonCard pokemon={pokemon} />
+                  </div>
+                </label>
               </div>
             ))}
-          </div>
-        </Box>
-      )}
+          </Slider>
+          <Button style={{ marginTop: '10px' }} type="submit" variant="contained" color="primary" fullWidth>
+            Criar Time
+          </Button>
+        </form>
+        <Snackbar open={Boolean(error)} autoHideDuration={6000} onClose={() => setError('')}>
+          <Alert severity="error">{error}</Alert>
+        </Snackbar>
+
+        <Snackbar open={Boolean(successMessage)} autoHideDuration={6000} onClose={() => setSuccessMessage('')}>
+          <Alert severity="success">{successMessage}</Alert>
+        </Snackbar>
+
+        {isTeamCreated && (
+          <Button style={{ marginTop: '10px' }} variant="outlined" onClick={() => setShowTeam(!showTeam)}>
+            {showTeam ? 'Esconder Time' : 'Ver Time'}
+          </Button>
+        )}
+
+        {showTeam && (
+          <Box mt={2} style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ alignItems: 'center' }}>
+              <Typography className="pokemonTypography" variant="h5" style={{ fontFamily: 'Luckiest Guy', textAlign: 'center' }}>Seu Time está preparado treinador</Typography>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
+              {team.map(pokemon => (
+                <div key={pokemon.id} style={{ margin: '10px' }}>
+                  <PokemonCard pokemon={pokemon} />
+                </div>
+              ))}
+            </div>
+          </Box>
+        )}
+      </Paper>
     </Box>
   );
 };

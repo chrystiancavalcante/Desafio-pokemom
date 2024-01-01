@@ -19,9 +19,9 @@ const PokemonEvolutionViewer: React.FC = () => {
   };
 
   return (
-    <Box p={3}>
-      <Paper elevation={3} style={{ padding: '20px', textAlign: 'center' }}>
-        <Typography className="pokemonTypography" variant="h5" gutterBottom>
+    <Box p={2}>
+      <Paper elevation={3} style={{ padding: '20px', textAlign: 'center', backgroundColor: 'rgba(255, 255, 255, 0.6)' }}>
+        <Typography className="pokemonTypography" variant="h4" style={{fontFamily: 'Luckiest Guy'}} gutterBottom>
           Visualizador de Evoluções Pokémon
         </Typography>
         <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>

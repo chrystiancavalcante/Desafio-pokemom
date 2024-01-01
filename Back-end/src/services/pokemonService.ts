@@ -3,6 +3,7 @@ import axios from 'axios';
 interface Pokemon {
   id: number;
   name: string;
+  type: string[];
 }
 
 export async function getPokemons(limit: number, offset: number): Promise<Pokemon[]> {
@@ -27,27 +28,35 @@ export async function getPokemons(limit: number, offset: number): Promise<Pokemo
 export async function getPokemonsByName(name: string): Promise<Pokemon[]> {
   try {
     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
-
     const pokemon = response.data;
+    const types = pokemon.types.map((typeInfo: { type: { name: any; }; }) => typeInfo.type.name);
+
     return [{
       id: pokemon.id,
       name: pokemon.name,
+      type: types
     }];
   } catch (error) {
     console.error('Erro ao buscar Pokémon:', error);
-    // Retorne um array vazio ou lance um erro, dependendo da sua preferência
     return [];
   }
 }
 
+
 export async function getPokemonsByType(type: string): Promise<Pokemon[]> {
   try {
     const response = await axios.get(`https://pokeapi.co/api/v2/type/${type.toLowerCase()}`);
-    // Transforme a resposta da API no formato desejado
-    const pokemons = response.data.pokemon.map((pokemonEntry: { pokemon: { id: any; name: any; }; }) => ({
-      id: pokemonEntry.pokemon.id,
-      name: pokemonEntry.pokemon.name,
-      // outros campos necessários
+    const pokemonsData = response.data.pokemon;
+
+    const pokemons = await Promise.all(pokemonsData.map(async (pokemonEntry: { pokemon: { name: string; url: string; }; }) => {
+      const pokemonDetails = await axios.get(pokemonEntry.pokemon.url);
+      const types = pokemonDetails.data.types.map((typeInfo: { type: { name: any; }; }) => typeInfo.type.name);
+
+      return {
+        id: pokemonDetails.data.id,
+        name: pokemonDetails.data.name,
+        type: types
+      };
     }));
 
     return pokemons;
@@ -56,3 +65,4 @@ export async function getPokemonsByType(type: string): Promise<Pokemon[]> {
     return [];
   }
 }
+
