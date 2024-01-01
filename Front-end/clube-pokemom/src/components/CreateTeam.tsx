@@ -40,10 +40,12 @@ const CreateTeam: React.FC = () => {
     setSelectedPokemons(prev => {
       if (prev.includes(pokemonId)) {
         return prev.filter(id => id !== pokemonId);
-      } else if (prev.length < 5) {
+      } else if (prev.length === 5) {
+        setError('Número máximo de 5 Pokémons no time');
+        return prev;
+      } else {
         return [...prev, pokemonId];
       }
-      return prev;
     });
   };
 
@@ -129,7 +131,7 @@ const CreateTeam: React.FC = () => {
         <Typography className="pokemonTypography" variant="h4" style={{ fontFamily: 'Luckiest Guy' }} gutterBottom>
           Crie seu Time de Pokémons
         </Typography>
-        <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '1000px' }}>
+        <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '1024px' }}>
           <Slider {...settings}>
             {pokemons.map(pokemon => (
               <div key={pokemon.id} style={{ margin: '10px', display: 'flex', justifyContent: 'center'  }}>
@@ -167,9 +169,9 @@ const CreateTeam: React.FC = () => {
         )}
 
         {showTeam && (
-          <Box mt={2} style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <div style={{ alignItems: 'center' }}>
-              <Typography className="pokemonTypography" variant="h5" style={{ fontFamily: 'Luckiest Guy', textAlign: 'center' }}>Seu Time está preparado treinador</Typography>
+          <Box mt={2} style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ alignItems: 'center', marginTop: '10px' }}>
+              <Typography className="pokemonTypography" variant="h5" style={{ fontFamily: 'Luckiest Guy', textAlign: 'center', margin:'10px' }}>Seu Time está preparado treinador</Typography>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
               {team.map(pokemon => (

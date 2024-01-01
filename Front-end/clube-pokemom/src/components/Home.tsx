@@ -67,7 +67,7 @@ const Home = () => {
 
   const handleMenuItemClick = (component: string) => {
     setActiveComponent(component);
-    setDrawerOpen(false);
+    //setDrawerOpen(false);
   };
 
   return (
@@ -110,7 +110,7 @@ const Home = () => {
                 style={{ color: 'gray' }}
               >
                 {item.icon}
-                <ListItemText primary={item.text} />
+                <ListItemText primary={item.text} style={{ marginLeft: '5px' }}/>
               </ListItemButton>
             ))}
           </List>
@@ -120,7 +120,7 @@ const Home = () => {
               style={{ color: 'gray' }}
             >
               <LogoutIcon />
-              <ListItemText primary="Logout" />
+              <ListItemText primary="Logout" style={{ marginLeft: '5px' }}/>
             </ListItemButton>
           </List>
         </div>

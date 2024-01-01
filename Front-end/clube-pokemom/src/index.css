@@ -111,6 +111,7 @@ button:focus-visible {
 /* Pokemon Card */
 
 .pokemon-card {
+  justify-content: center;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 15px;
   transition: transform 0.3s ease-in-out;

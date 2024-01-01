@@ -8,7 +8,7 @@ const PokemonCard: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
   const typeText = pokemon.type && pokemon.type.length > 0
   ? pokemon.type.join(', ')
   : ' ';
-  
+
   return (
     <Card className="pokemon-card">
       <CardMedia
