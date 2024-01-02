@@ -129,7 +129,7 @@ const CreateTeam: React.FC = () => {
     <Box p={3}>
       <Paper className='transparent-background' elevation={3} style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.6)' }}>
         <Typography className="pokemonTypography" variant="h4" style={{ fontFamily: 'Luckiest Guy' }} gutterBottom>
-          Crie seu Time de Pokémons
+          Escolha e crie seu Time de Pokémons
         </Typography>
         <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '1024px' }}>
           <Slider {...settings}>
