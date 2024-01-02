@@ -42,6 +42,8 @@ Este projeto oferece um sistema interativo para treinadores Pokémon, permitindo
 
 - Segurança e Acesso: Utilização do Ngrok para criação de URLs seguras, facilitando a conexão segura com o backend na rota /register.
 
+  ![Tela do Ngrok](https://firebasestorage.googleapis.com/v0/b/softwarepro-28ade.appspot.com/o/Captura%20de%20Tela%202024-01-02%20a%CC%80s%2011.16.51.png?alt=media&token=497b5058-7e01-4a37-ae13-12ab8610c642)
+
 - Validação de Formulários: Formik é usado para validar os formulários de login e registro, garantindo a integridade dos dados dos usuários.
 
 - Como Utilizar
