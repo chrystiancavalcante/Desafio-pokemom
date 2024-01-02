@@ -7,11 +7,11 @@ import ListIcon from '@mui/icons-material/List';
 import SearchIcon from '@mui/icons-material/Search';
 import CreateIcon from '@mui/icons-material/Create';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import { useAuth } from './contexts/AuthContext';
-import PokemonList from './PokemonList';
-import PokemonSearch from './PokemonSearch';
-import CreateTeam from './CreateTeam';
-import PokemonEvolutionViewer from './PokemonEvolutionViewer';
+import { useAuth } from '../contexts/AuthContext';
+import PokemonList from '../components/PokemonList';
+import PokemonSearch from '../components/PokemonSearch';
+import CreateTeam from '../components/CreateTeam';
+import PokemonEvolutionViewer from '../components/PokemonEvolutionViewer';
 
 const drawerWidth = 240;
 
@@ -35,7 +35,6 @@ const Home = () => {
     { text: 'Criar Time', component: 'createTeam', icon: <CreateIcon /> },
     { text: 'Visualizar Evoluções', component: 'pokemonEvolutionViewer', icon: <VisibilityIcon /> },
   ];
-
 
   const getGreeting = () => {
     const hour = new Date().getHours();

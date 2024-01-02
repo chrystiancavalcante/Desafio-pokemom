@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Button, CircularProgress, Box, Grid, Typography, Paper } from '@mui/material';
 import PokemonCard from './PokemonCard';
-import './PokemonList.css';
-import { Pokemon } from './Types';
+import './layout/PokemonList.css';
+import { Pokemon } from '../types/Types';
 
 const PokemonList: React.FC = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);

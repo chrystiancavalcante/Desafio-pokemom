@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Box, Paper, Typography, Grid, CircularProgress } from '@mui/material';
 import PokemonCard from './PokemonCard';
-import { Pokemon, SearchState } from './Types';
+import { Pokemon, SearchState } from '../types/Types';
 
 const PokemonSearch: React.FC = () => {
   const [search, setSearch] = useState<SearchState>({

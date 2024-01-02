@@ -4,8 +4,8 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PokemonCard from './PokemonCard';
-import './CarouselStyles.css';
-import { Pokemon } from './Types';
+import './layout/CarouselStyles.css';
+import { Pokemon } from '../types/Types';
 
 const CreateTeam: React.FC = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);

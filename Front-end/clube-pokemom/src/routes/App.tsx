@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
-import { AuthProvider } from './components/contexts/AuthContext';
-import ProtectedRoute from './components/ProtectedRoute';
-import NotFound from './components/NotFound';
-import Home from './components/Home';
-import Login from './components/Login';
-import Register from './components/Register';
+import { AuthProvider } from '../contexts/AuthContext';
+import ProtectedRoute from './ProtectedRoute';
+import NotFound from '../pages/NotFound';
+import Home from '../pages/Home';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
 
 function App() {
   return (

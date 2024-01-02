@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from './contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { TextField, Button, Container, Typography, Box, Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';

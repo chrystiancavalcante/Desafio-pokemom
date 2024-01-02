@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Container, Typography, Paper, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { useAuth } from './contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup'; 
 

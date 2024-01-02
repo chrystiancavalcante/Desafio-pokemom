@@ -1,7 +1,7 @@
 import { Box, CircularProgress, Grid } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import PokemonCard from './PokemonCard';
-import { Evolution } from './Types';
+import { Evolution } from '../types/Types';
 
 const PokemonEvolutions: React.FC<{ pokemonId: number }> = ({ pokemonId }) => {
   const [evolutions, setEvolutions] = useState<Evolution[]>([]);
