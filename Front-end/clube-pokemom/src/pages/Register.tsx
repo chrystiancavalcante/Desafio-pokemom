@@ -16,6 +16,7 @@ const Register = () => {
 
   const handleFormSubmit = async (values: { username: string; }, actions: { setFieldError: (arg0: string, arg1: string) => void; }) => {
     try {
+      //Usar o ngrok para gerar a url para evitar o problema de Cors
       const response = await fetch('https://2331-2804-7f1-e88d-7939-c1e4-e04b-8b36-503e.ngrok-free.app/register', {
         method: 'POST',
         headers: {
