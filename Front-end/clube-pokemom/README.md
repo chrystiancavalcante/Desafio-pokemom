@@ -75,8 +75,8 @@ Para informações detalhadas sobre os endpoints da API, consulte a documentaç�
 Sugestões e contribuições são sempre bem-vindas! 
 
 
-Contato
-CHRYSTIAN CAVALCANTE - chrystiancavalcante@gmail.com
+- Contato:
+- CHRYSTIAN CAVALCANTE - chrystiancavalcante@gmail.com
 
 
 
