@@ -30,6 +30,8 @@ Instruções sobre como usar a API.
 
 Acesse a documentação da API em: http://localhost:3000/api-docs
 
+![Tela da documentação da API](https://firebasestorage.googleapis.com/v0/b/softwarepro-28ade.appspot.com/o/Captura%20de%20Tela%202024-01-02%20a%CC%80s%2010.07.53.png?alt=media&token=e650a6c5-489c-4857-a627-021c0c19c66c)
+
 ## Endpoints
 
 * GET /pokemons - Retorna uma lista de todos os Pokémons.
