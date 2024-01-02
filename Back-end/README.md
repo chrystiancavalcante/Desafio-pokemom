@@ -1,10 +1,11 @@
-# Nome do Projeto (API de Pokémon)
+# Documentação do Sistema de Gerenciamento de Treinadores Pokémon
 
 ## Descrição
-Breve descrição do que a API faz:
-"Esta API fornece informações detalhadas sobre Pokémons, incluindo dados sobre evoluções, tipos e estatísticas. Ela é construída com Node.js e Express e utiliza a PokeAPI para buscar dados de Pokémons em tempo real."
+
+Esta API fornece informações detalhadas sobre Pokémons, incluindo dados sobre evoluções, tipos e estatísticas. Ela é construída com Node.js e Express e utiliza a PokeAPI para buscar dados de Pokémons em tempo real.
 
 ## Tecnologias Utilizadas
+
 - Node.js
 - Express
 - TypeScript
