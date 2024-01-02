@@ -9,6 +9,7 @@ services:
     depends_on:
       - db            # Indica que o backend depende do banco de dados
     environment:
+      - POKEAPI_BASE_URL=https://pokeapi.co/api/v2
       - JWT_SECRET_KEY=minha_chave_secreta_aqui
       - DB_CONNECTION_STRING=postgres://postgres:senha123@db:5432/postgresdb
       - DB_HOST=db    # Configura variáveis de ambiente necessárias
@@ -22,7 +23,9 @@ services:
     build: ./Front-end/clube-pokemom # Caminho para o diretório do frontend com o Dockerfile
     ports:
       - "8080:8080"   # Mapeia a porta 8080 do contêiner para a porta 8080 do host
-
+    environment:
+      - VITE_API_BASE_URL=http://localhost:3000
+      
   # Serviço para o banco de dados PostgreSQL
   db:
     image: postgres:latest

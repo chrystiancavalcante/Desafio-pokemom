@@ -29,7 +29,7 @@ const PokemonList: React.FC = () => {
     setIsLoading(true);
     try {
       const offset = page * limit;
-      const response = await fetch(`http://localhost:3000/pokemons?limit=${limit}&offset=${offset}`);
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/pokemons?limit=${limit}&offset=${offset}`);
       const data = await response.json();
       setPokemons(prevPokemons => [...prevPokemons, ...data]);
       setPage(prevPage => prevPage + 1);

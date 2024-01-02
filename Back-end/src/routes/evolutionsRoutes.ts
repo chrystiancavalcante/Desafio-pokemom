@@ -2,6 +2,12 @@ import express, { Request, Response } from 'express';
 import axios from 'axios';
 const router = express.Router();
 
+const pokeApiBaseUrl = process.env.POKEAPI_BASE_URL;
+
+if (!pokeApiBaseUrl) {
+  throw new Error('POKEAPI_BASE_URL não está definida');
+}
+
 /**
  * @openapi
 * /pokemon/{id}/evolutions:
@@ -48,7 +54,7 @@ const router = express.Router();
 router.get('/pokemon/:id/evolutions', async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
-      const evolutionResponse = await axios.get(`https://pokeapi.co/api/v2/evolution-chain/${id}`);
+      const evolutionResponse = await axios.get(`${pokeApiBaseUrl}/evolution-chain/${id}`);
       const evolutions = evolutionResponse.data.chain;
       res.json(evolutions);
     } catch (error) {

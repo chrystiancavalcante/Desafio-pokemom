@@ -6,9 +6,15 @@ interface Pokemon {
   type: string[];
 }
 
+const pokeApiBaseUrl = process.env.POKEAPI_BASE_URL;
+
+if (!pokeApiBaseUrl) {
+  throw new Error('POKEAPI_BASE_URL não está definida');
+}
+
 export async function getPokemons(limit: number, offset: number): Promise<Pokemon[]> {
     try {
-      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
+      const response = await axios.get(`${pokeApiBaseUrl}/pokemon?limit=${limit}&offset=${offset}`);
       const pokemons = await Promise.all(response.data.results.map(async (pokemon: { url: string; name: any; }) => {
         const pokemonDetails = await axios.get(pokemon.url); 
         const types = pokemonDetails.data.types.map((typeInfo: { type: { name: any; }; }) => typeInfo.type.name);
@@ -27,7 +33,7 @@ export async function getPokemons(limit: number, offset: number): Promise<Pokemo
 
 export async function getPokemonsByName(name: string): Promise<Pokemon[]> {
   try {
-    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
+    const response = await axios.get(`${pokeApiBaseUrl}/pokemon/${name.toLowerCase()}`);
     const pokemon = response.data;
     const types = pokemon.types.map((typeInfo: { type: { name: any; }; }) => typeInfo.type.name);
 
@@ -42,10 +48,9 @@ export async function getPokemonsByName(name: string): Promise<Pokemon[]> {
   }
 }
 
-
 export async function getPokemonsByType(type: string): Promise<Pokemon[]> {
   try {
-    const response = await axios.get(`https://pokeapi.co/api/v2/type/${type.toLowerCase()}`);
+    const response = await axios.get(`${pokeApiBaseUrl}/type/${type.toLowerCase()}`);
     const pokemonsData = response.data.pokemon;
 
     const pokemons = await Promise.all(pokemonsData.map(async (pokemonEntry: { pokemon: { name: string; url: string; }; }) => {

@@ -22,7 +22,7 @@ const PokemonSearch: React.FC = () => {
         name: search.name,
         type: search.type
       }).toString();
-      const response = await fetch(`http://localhost:3000/pokemons/search?${query}`);
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/pokemons/search?${query}`);
 
       if (!response.ok) {
         if (response.status === 404) {

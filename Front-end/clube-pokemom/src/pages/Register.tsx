@@ -13,11 +13,13 @@ const validationSchema = Yup.object({
 const Register = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
-
+  
   const handleFormSubmit = async (values: { username: string; }, actions: { setFieldError: (arg0: string, arg1: string) => void; }) => {
     try {
       //Usar o ngrok para gerar a url para evitar o problema de Cors
-      const response = await fetch('https://2331-2804-7f1-e88d-7939-c1e4-e04b-8b36-503e.ngrok-free.app/register', {
+     const response = await fetch('https://2331-2804-7f1-e88d-7939-c1e4-e04b-8b36-503e.ngrok-free.app/register', 
+      /* const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/register`, */
+      {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

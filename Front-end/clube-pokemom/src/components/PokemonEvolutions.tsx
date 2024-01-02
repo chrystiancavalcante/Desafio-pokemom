@@ -10,7 +10,7 @@ const PokemonEvolutions: React.FC<{ pokemonId: number }> = ({ pokemonId }) => {
   const fetchEvolutions = async (pokemonId: number) => {
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:3000/pokemon/${pokemonId}/evolutions`);
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/pokemon/${pokemonId}/evolutions`);
       const data = await response.json();
       parseEvolutions(data);
     } catch (error) {

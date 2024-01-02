@@ -10,9 +10,13 @@ import teamRoutes from './routes/teamRoutes';
 import searchRoutes from './routes/searchRoutes';
 import evolutionsRoutes from './routes/evolutionsRoutes';
 
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const app = express();
 app.use(cors());
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());
 
 app.use(registerRoutes);
 app.use(loginRoutes);
@@ -22,5 +26,5 @@ app.use(searchRoutes);
 app.use(evolutionsRoutes);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-  
+
 export default app;

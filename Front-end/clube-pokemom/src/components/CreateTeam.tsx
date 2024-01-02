@@ -24,7 +24,7 @@ const CreateTeam: React.FC = () => {
 
   const fetchPokemons = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/pokemons?limit=${limit}&offset=${page * limit}`);
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/pokemons?limit=${limit}&offset=${page * limit}`);
       const data: Pokemon[] = await response.json();
       setPokemons(prev => [...prev, ...data]);
     } catch (err) {
@@ -60,7 +60,7 @@ const CreateTeam: React.FC = () => {
         if (!token) {
           throw new Error('Token de autenticação não encontrado');
         }
-        const response = await fetch('http://localhost:3000/team', {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/team`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
