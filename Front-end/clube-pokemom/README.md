@@ -14,6 +14,10 @@ Este projeto oferece um sistema interativo para treinadores Pokémon, permitindo
 
 ![Tela de Registro](https://firebasestorage.googleapis.com/v0/b/softwarepro-28ade.appspot.com/o/Captura%20de%20Tela%202024-01-02%20a%CC%80s%2009.48.12.png?alt=media&token=69ecab6e-acbe-4e90-a071-db512272c7ac)
 
+- Navegação entre as funcionalidades: O usuário pode navegar pelas funcionalidades através de um menu lateral.
+
+![Tela do menu](https://firebasestorage.googleapis.com/v0/b/softwarepro-28ade.appspot.com/o/Captura%20de%20Tela%202024-01-02%20a%CC%80s%2009.50.16.png?alt=media&token=7e2500f5-89e5-4bf2-a8f6-d7ccefa3e58b)
+
 - Criação de Times de Pokémon: Cada treinador pode criar um time com até 5 Pokémons.
 
 ![Tela para criar Time](https://firebasestorage.googleapis.com/v0/b/softwarepro-28ade.appspot.com/o/Captura%20de%20Tela%202024-01-02%20a%CC%80s%2009.49.32.png?alt=media&token=979692fc-7909-4e97-bde2-c65e88c1e80c)
