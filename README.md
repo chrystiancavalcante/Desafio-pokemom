@@ -31,10 +31,7 @@ git clone https://github.com/chrystiancavalcante/Desafio-pokemom.git
 
 * Docker
 * Docker Compose (se necessário)
-* OBS: É necessário que use o Ngrok ou qualquer outra ferramenta para gerar a Url da rota /register no frontend de forma segura "https".
-  Para que não tenha problema de Cors ao registrar um novo treinador, caso não o faça, poderá não funcionar como o esperado.
 
-  ![Tela do Ngrok](https://firebasestorage.googleapis.com/v0/b/softwarepro-28ade.appspot.com/o/Captura%20de%20Tela%202024-01-02%20a%CC%80s%2011.16.51.png?alt=media&token=497b5058-7e01-4a37-ae13-12ab8610c642)
 
 # Projeto finalizado
 
