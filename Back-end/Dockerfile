@@ -16,5 +16,5 @@ RUN npm run build
 # Exponha a porta
 EXPOSE 3000
 
-# Comando para rodar o app
-CMD ["node", "dist/server.js"]
+# Comando para rodar as migrations e então rodar o app
+CMD npx sequelize db:migrate && node dist/server.js

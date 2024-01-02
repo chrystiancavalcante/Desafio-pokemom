@@ -1,0 +1,27 @@
+{
+  "development": {
+    "use_env_variable": "DB_CONNECTION_STRING",
+    "username": "POSTGRES_USER",
+    "password": "POSTGRES_PASSWORD",
+    "database": "POSTGRES_DB",
+    "host": "DB_HOST",
+    "port": "DB_PORT",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "POSTGRES_USER",
+    "password": "POSTGRES_PASSWORD",
+    "database": "POSTGRES_DB",
+    "host": "DB_HOST",
+    "port": "DB_PORT",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "POSTGRES_USER",
+    "password": "POSTGRES_PASSWORD",
+    "database": "POSTGRES_DB",
+    "host": "DB_HOST",
+    "port": "DB_PORT",
+    "dialect": "postgres"
+  }
+}
