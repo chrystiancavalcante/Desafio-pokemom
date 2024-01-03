@@ -16,8 +16,7 @@ const Register = () => {
   
   const handleFormSubmit = async (values: { username: string; }, actions: { setFieldError: (arg0: string, arg1: string) => void; }) => {
     try {
-      
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/register`,
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/register`, 
       {
         method: 'POST',
         headers: {
@@ -31,6 +30,7 @@ const Register = () => {
       }
 
       const data = await response.json();
+      localStorage.setItem('token', data.token);
       login(data.token, values.username);
       navigate('/');
     } catch (error) {
