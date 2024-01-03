@@ -38,10 +38,10 @@ const Home = () => {
 
   const getGreeting = () => {
     const hour = new Date().getHours();
-    if (hour < 5) return 'boa Madrugada !';
-    else if (hour < 12) return 'bom dia, já tomou seu café da manhã hoje ?';
-    else if (hour < 18) return 'boa tarde !';
-    else return 'boa noite, já saiu para passear com o cachorro hoje ?';
+    if (hour < 5) return `Boa madrugada, ${username}! Enquanto muitos descansam, os treinadores mais dedicados continuam.`;
+    else if (hour < 12) return `Bom dia, ${username}! já tomou seu café da manhã hoje?`;
+    else if (hour < 18) return `Boa tarde, ${username}! Espero que seu dia esteja cheio de conquistas.`;
+    else return `Boa noite, ${username}! As estrelas estão brilhando e os Pokémons noturnos estão à solta.`;
   };
 
   const handleLogout = () => {
@@ -129,7 +129,7 @@ const Home = () => {
         <Toolbar />
         <div style={{ flexGrow: 1, marginLeft: 20, backgroundColor: '#8FC9F9', borderRadius: 15, padding: 30, color: '#FFFFFF' }}>
           <Typography variant="h6" style={{ flexGrow: 1, marginLeft: 40 }}>
-            {username}, {getGreeting()}
+            {getGreeting()} Comece criando seu time com 5 Pokémons. Explore a variedade na lista de Pokémons e escolha aqueles que complementam suas estratégias de batalha.
           </Typography>
         </div>
         {renderComponent()}

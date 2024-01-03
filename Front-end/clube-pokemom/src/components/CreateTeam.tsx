@@ -17,7 +17,7 @@ const CreateTeam: React.FC = () => {
   const [isTeamCreated, setIsTeamCreated] = useState(false);
   const [page, setPage] = useState<number>(0);
   const limit = 20;
-
+  
   useEffect(() => {
     fetchPokemons();
   }, [page]);
