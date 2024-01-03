@@ -41,7 +41,7 @@ const CreateTeam: React.FC = () => {
       if (prev.includes(pokemonId)) {
         return prev.filter(id => id !== pokemonId);
       } else if (prev.length === 5) {
-        setError('Número máximo de 5 Pokémons no time');
+        setError('Você já selecionou o número máximo de 5 Pokémons');
         return prev;
       } else {
         return [...prev, pokemonId];
