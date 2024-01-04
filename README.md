@@ -35,7 +35,13 @@ git clone https://github.com/chrystiancavalcante/Desafio-pokemom.git
 
 # Projeto finalizado
 
-![Tela de Login](https://firebasestorage.googleapis.com/v0/b/softwarepro-28ade.appspot.com/o/Captura%20de%20Tela%202024-01-02%20a%CC%80s%2009.50.16.png?alt=media&token=7e2500f5-89e5-4bf2-a8f6-d7ccefa3e58b)
+## Tela de Login
+![Tela de Login](https://firebasestorage.googleapis.com/v0/b/softwarepro-28ade.appspot.com/o/Captura%20de%20Tela%202024-01-02%20a%CC%80s%2009.48.00.png?alt=media&token=a330085d-bd78-48ec-bf15-07be6a3efebd)
+
+
+## Tela de Navegação
+
+![Tela de Navegacao](https://firebasestorage.googleapis.com/v0/b/softwarepro-28ade.appspot.com/o/Captura%20de%20Tela%202024-01-02%20a%CC%80s%2009.50.16.png?alt=media&token=7e2500f5-89e5-4bf2-a8f6-d7ccefa3e58b)
 
 ## Contribuição
 
