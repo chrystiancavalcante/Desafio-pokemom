@@ -21,7 +21,7 @@ const PokemonEvolutionViewer: React.FC = () => {
   return (
     <Box p={2}>
       <Paper elevation={3} style={{ padding: '20px', textAlign: 'center', backgroundColor: 'rgba(255, 255, 255, 0.6)' }}>
-        <Typography className="pokemonTypography" variant="h4" style={{fontFamily: 'Luckiest Guy'}} gutterBottom>
+        <Typography className="pokemonTypography" variant="h4" style={{ fontFamily: 'Luckiest Guy' }} gutterBottom>
           Visualizador de Evoluções Pokémon
         </Typography>
         <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
@@ -29,7 +29,7 @@ const PokemonEvolutionViewer: React.FC = () => {
             type="number"
             value={inputValue}
             onChange={handleInputChange}
-            placeholder="Digite o ID do Pokémon"
+            placeholder="Digite o ID da evolução do Pokémon"
             variant="outlined"
             margin="normal"
             fullWidth
@@ -38,7 +38,6 @@ const PokemonEvolutionViewer: React.FC = () => {
             Buscar Evoluções
           </Button>
         </form>
-
         {pokemonId && <PokemonEvolutions pokemonId={pokemonId} />}
       </Paper>
     </Box>

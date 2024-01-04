@@ -4,10 +4,10 @@ import { Pokemon } from '../types/Types';
 
 const PokemonCard: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
   const imageUrl = pokemon.imageUrl || `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
-  
+
   const typeText = pokemon.type && pokemon.type.length > 0
-  ? pokemon.type.join(', ')
-  : ' ';
+    ? pokemon.type.join(', ')
+    : ' ';
 
   return (
     <Card className="pokemon-card">
@@ -18,7 +18,7 @@ const PokemonCard: React.FC<{ pokemon: Pokemon }> = ({ pokemon }) => {
         alt={pokemon.name}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div" className="pokemon-name" style={{fontFamily: 'Luckiest Guy'}}>
+        <Typography gutterBottom variant="h5" component="div" className="pokemon-name" style={{ fontFamily: 'Luckiest Guy' }}>
           {pokemon.name}
         </Typography>
         <Typography variant="body2" className="pokemon-type">

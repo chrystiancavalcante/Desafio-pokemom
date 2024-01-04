@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Grid } from '@mui/material';
+import { Box, CircularProgress, Grid, Typography } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import PokemonCard from './PokemonCard';
 import { Evolution } from '../types/Types';
@@ -9,6 +9,7 @@ const PokemonEvolutions: React.FC<{ pokemonId: number }> = ({ pokemonId }) => {
 
   const fetchEvolutions = async (pokemonId: number) => {
     setIsLoading(true);
+    setEvolutions([]);
     try {
       const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/pokemon/${pokemonId}/evolutions`);
       const data = await response.json();
@@ -16,7 +17,7 @@ const PokemonEvolutions: React.FC<{ pokemonId: number }> = ({ pokemonId }) => {
     } catch (error) {
       console.error('Erro ao buscar evoluções:', error);
     } finally {
-      setIsLoading(false); 
+      setIsLoading(false);
     }
   };
 
@@ -28,7 +29,7 @@ const PokemonEvolutions: React.FC<{ pokemonId: number }> = ({ pokemonId }) => {
       const evolutionData = {
         id: getIdFromUrl(currentStage.species.url),
         name: currentStage.species.name,
-        type: currentStage.type, 
+        type: currentStage.type,
         imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIdFromUrl(currentStage.species.url)}.png`
       };
 
@@ -57,6 +58,10 @@ const PokemonEvolutions: React.FC<{ pokemonId: number }> = ({ pokemonId }) => {
         <Box display="flex" justifyContent="center" style={{ marginTop: '20px' }}>
           <CircularProgress />
         </Box>
+      ) : evolutions.length === 0 ? (
+        <Typography className="pokemonTypography" variant="h4" style={{ fontFamily: 'Luckiest Guy' }} gutterBottom>
+          Nenhuma evolução encontrada.
+        </Typography>
       ) : (
         <Grid container spacing={2} style={{ justifyContent: "center" }}>
           {evolutions.map((evolution) => (

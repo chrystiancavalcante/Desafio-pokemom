@@ -17,4 +17,6 @@
   .slick-next {
     right: -40px;
   }
-  
+  .custom-dot-class {
+    bottom: -100px; 
+  }  

@@ -15,7 +15,7 @@ const PokemonSearch: React.FC = () => {
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    setSearch(prev => ({ ...prev, error: '' }));
+    setSearch(prev => ({ ...prev, pokemons: [], error: '' }));
 
     try {
       const query = new URLSearchParams({
