@@ -1,5 +1,7 @@
 # Desafio Pokemom 
 
+* Sistema onde treinadores possam entrar se cadastrando com o seu nome de treinador e senha e, ao entrarem possuam as seguintes funcionalidades:
+
 * 1°) Criar um time de pokémons com 5 pokémons (o total de pokémons no time é 5);
 
 * 2°) Listar todos os pokémons da API;
