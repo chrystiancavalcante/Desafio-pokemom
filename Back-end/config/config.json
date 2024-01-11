@@ -2,8 +2,8 @@
   "development": {
     "use_env_variable": "DB_CONNECTION_STRING",
     "username": "POSTGRES_USER",
-    "password": "POSTGRES_PASSWORD",
-    "database": "POSTGRES_DB",
+    "password": "DB_PASSWORD",
+    "database": "DB_NAME",
     "host": "DB_HOST",
     "port": "DB_PORT",
     "dialect": "postgres"

@@ -9,6 +9,8 @@ import pokemonRoutes from './routes/pokemonRoutes';
 import teamRoutes from './routes/teamRoutes';
 import searchRoutes from './routes/searchRoutes';
 import evolutionsRoutes from './routes/evolutionsRoutes';
+import { downloadRoute } from './routes/download';
+import { stripeWebhookRoute } from './routes/stripeWebhook';
 
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
@@ -24,6 +26,8 @@ app.use(pokemonRoutes);
 app.use(teamRoutes);
 app.use(searchRoutes);
 app.use(evolutionsRoutes);
+app.post('/webhook', stripeWebhookRoute);
+app.get('/download', downloadRoute);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
